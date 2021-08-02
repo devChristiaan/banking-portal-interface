@@ -26,7 +26,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 export default function Dashboard() {
+  //Sytles
   const classes = useStyles();
+  //Slide Drawer Logic
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -34,7 +36,9 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  //Fixed Height Comp
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  //Tabs Logic
 
   return (
     <div className={classes.root}>
@@ -85,6 +89,9 @@ export default function Dashboard() {
             {/* Payments */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
+                <Tabs value={value} onChange={handleChange}>
+
+                </Tabs>
                 <Orders />
               </Paper>
             </Grid>
