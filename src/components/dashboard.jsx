@@ -39,7 +39,11 @@ export default function Dashboard() {
   //Fixed Height Comp
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   //Tabs Logic
+  const [value, setValue] = React.useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -76,6 +80,7 @@ export default function Dashboard() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
+    {/* Main Component Section */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
