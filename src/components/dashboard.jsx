@@ -1,15 +1,15 @@
-//Dependencies Imports
+//App Imports
 import React from 'react';
 import clsx from 'clsx';
+import useStyles from './styles/styles';
 
 //Module Imports
-import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Orders from './Orders';
-import { useStyles } from './styles/styles';
 import { Copyright } from './helper/Copyright';
+import { mainListItems } from './listItems';
 
-//Styles Import
+//Styles Imports
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
@@ -24,14 +24,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-
 
 export default function Dashboard() {
-  //Sytles
   const classes = useStyles();
-  //Slide Drawer Logic
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -39,14 +34,8 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  //Fixed Height Comp
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  //Tabs Logic
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -80,34 +69,18 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
       </Drawer>
-    {/* Main Component Section */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Summary */}
+            {/* Chart */}
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
             </Grid>
-            {/* Payments */}
-            <Grid item xs={12}>
-              <Paper>
-                <Tabs value={value} onChange={handleChange}>
-                  <Tab label="First" />
-                  <Tab label="Second" />
-                  <Tab label="Third" />
-                </Tabs>
-              </Paper>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
-            {/* Transactions */}
+            {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Orders />

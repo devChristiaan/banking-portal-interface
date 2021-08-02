@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
 
 const drawerWidth = 240;
 
-export const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
@@ -80,3 +80,5 @@ export const useStyles = makeStyles((theme) => ({
     height: 240,
   },
 }));
+
+export default useStyles;
