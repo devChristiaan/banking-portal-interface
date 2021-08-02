@@ -39,10 +39,10 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   //Tabs Logic
-  const [value, setValue] = React.useState(0);
+  const [selectedTab, setSelectedTab] = React.useState(0);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setSelectedTab(newValue);
   }
 
   return (
@@ -92,11 +92,14 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
             <Paper>
-                <Tabs value={value} onChange={handleChange}>
+                <Tabs value={selectedTab} onChange={handleChange}>
                   <Tab label="First" />
                   <Tab label="Second" />
                   <Tab label="Third" />
                 </Tabs>
+                {selectedTab === 0 && <Orders />}
+                {selectedTab === 1 && <Orders />}
+                {selectedTab === 3 && <Orders />}
               </Paper>
               <Paper className={classes.paper}>
                 <Orders />
