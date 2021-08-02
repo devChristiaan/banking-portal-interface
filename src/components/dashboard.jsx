@@ -39,10 +39,17 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   //Tabs Logic
-  const [selectedTab, setSelectedTab] = React.useState(0);
+  //Payments Tab
+  const [selectedPaymentsTab, setselectedPaymentsTab] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setSelectedTab(newValue);
+  const handlePaymentsChange = (event, newValue) => {
+    setselectedPaymentsTab(newValue);
+  }
+  //Transactions Tab
+  const [selectedTransactionsTab, setselectedTransactionsTab] = React.useState(0);
+
+  const handleTransactionsChange = (event, newValue) => {
+    setselectedTransactionsTab(newValue);
   }
 
   return (
@@ -91,18 +98,28 @@ export default function Dashboard() {
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
-            <Paper>
-                <Tabs value={selectedTab} onChange={handleChange}>
+            <Paper className={classes.paper}>
+                <Tabs value={selectedPaymentsTab} onChange={handlePaymentsChange}>
                   <Tab label="First" />
                   <Tab label="Second" />
                   <Tab label="Third" />
                 </Tabs>
-                {selectedTab === 0 && <Orders />}
-                {selectedTab === 1 && <Orders />}
-                {selectedTab === 3 && <Orders />}
+                {selectedPaymentsTab === 0 && <Orders />}
+                {selectedPaymentsTab === 1 && <Orders />}
+                {selectedPaymentsTab === 2 && <Orders />}
               </Paper>
-              <Paper className={classes.paper}>
-                <Orders />
+            </Grid>
+            {/* Transactions Orders */}
+            <Grid item xs={12}>
+            <Paper className={classes.paper}>
+                <Tabs value={selectedTransactionsTab} onChange={handleTransactionsChange}>
+                  <Tab label="First" />
+                  <Tab label="Second" />
+                  <Tab label="Third" />
+                </Tabs>
+                {selectedTransactionsTab === 0 && <Orders />}
+                {selectedTransactionsTab === 1 && <Orders />}
+                {selectedTransactionsTab === 2 && <Orders />}
               </Paper>
             </Grid>
           </Grid>
