@@ -24,6 +24,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -35,6 +37,13 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  //Tabs Logic
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  }
 
   return (
     <div className={classes.root}>
@@ -82,6 +91,13 @@ export default function Dashboard() {
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
+            <Paper>
+                <Tabs value={value} onChange={handleChange}>
+                  <Tab label="First" />
+                  <Tab label="Second" />
+                  <Tab label="Third" />
+                </Tabs>
+              </Paper>
               <Paper className={classes.paper}>
                 <Orders />
               </Paper>
