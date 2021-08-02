@@ -24,6 +24,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+
 
 export default function Dashboard() {
   //Sytles
@@ -93,10 +96,14 @@ export default function Dashboard() {
             </Grid>
             {/* Payments */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
+              <Paper>
                 <Tabs value={value} onChange={handleChange}>
-
+                  <Tab label="First" />
+                  <Tab label="Second" />
+                  <Tab label="Third" />
                 </Tabs>
+              </Paper>
+              <Paper className={classes.paper}>
                 <Orders />
               </Paper>
             </Grid>
